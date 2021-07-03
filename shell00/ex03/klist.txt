@@ -1,0 +1,5 @@
+Credentials cache: API:E0C72E98-4D75-4BBE-8D4D-EDECB94760B1
+        Principal: ascotto-@42.FR
+
+  Issued                Expires               Principal
+Jun 28 13:56:20 2021  Jul  5 13:56:20 2021  krbtgt/42.FR@42.FR
