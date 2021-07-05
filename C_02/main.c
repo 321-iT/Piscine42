@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 10:26:20 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/05 10:15:13 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/05 22:54:53 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,22 +176,19 @@ int main(void)
     
     printf("\t\tEx09 :\n");
 	
-    char c4[] = "salut, coMMent tu vAs ? 42mOts quArAnTe-dEux; cinQuante+et+un";
-    ft_putstr("Salut, Comment Tu Vas ? 42mots Quarante-Deux; Cinquante+Et+Un:");
+    char c4[] = "444salut,coMMent tu vAs ?--- -[^/gytmk#le keGHugkk%3ql3d$ ----  42mOts quArAnTe-dEux; cinQuante+et+uni\n";
     ft_putstr(ft_strcapitalize(c4));
-    ft_putstr(":");
-    ft_putstr(c4);
 	//**********
 	JUMP;
 	//*********
     
     printf("\t\tEx10 :\n");
     
-	char 	destX[] = "ABCDEFG";
-	char	destY[] = "ABCEDFG"	;
+	char 	destX[] = "blabla";
+	char	destY[] = "blabla";
 
-    printf("Valeur de ft_strlcpy : %d\n", ft_strlcpy(destX, "abcdefg", 8));
-    printf("Valeur de strlcpy : %lu\n", strlcpy(destY, "abcdefg", 8));
+    printf("Valeur de ft_strlcpy : %d\n", ft_strlcpy(destX, "bla",6));
+    printf("Valeur de strlcpy : %lu\n", strlcpy(destY, "bla", 6));
    
 	printf("chaine apres ft_strlcpy : %s\n", destX);
 	printf("chaine apres strlcpy : %s\n", destY);
@@ -200,7 +197,7 @@ int main(void)
     
     printf("\t\tEx11 :\n");
     
-	char c5[] = "Coucou\ntu vas bien ?";
+	char c5[] = "Coucou\nåtu cć  vas bien ?";
     ft_putstr("Coucou\\0atu vas bien ?:");
     ft_putstr_non_printable(c5);
     char d[] = "\x81\xbe";
