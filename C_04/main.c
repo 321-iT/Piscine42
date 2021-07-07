@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 12:06:59 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/06 22:27:27 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/07 11:36:29 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ int	main(void)
 	printf("\n");
 	ft_putnbr(2147483647);
 	printf("\n");
+	ft_putnbr(10);
+	printf("\n");
+	for (int k = 0 ; k < 500 ; k++)
+		ft_putnbr(k);
 
 	JUMP;
 
