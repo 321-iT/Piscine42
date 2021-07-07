@@ -6,47 +6,35 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 12:56:33 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/07 11:34:18 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/07 20:39:31 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	condition(char *str, int i, int *neg, int my_atoi)
-{		
-	if ((str[i] == '\n' || str[i] == '\t' || str[i] == '\r'
-			|| str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
-		&& (my_atoi < 1 && *neg < 1))
-		return (1);
-	else if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			*neg += 1;
-		return (1);
-	}
-	return (0);
-}
 
 int	ft_atoi(char *str)
 {
 	int	i;
 	int	neg;
-	int	my_atoi;
+	int	res;
+	int	toggle;
 
 	i = 0;
-	neg = 0;
-	my_atoi = 0;
+	neg = 1;
+	res = 0;
+	toggle = 1;
 	while (str[i])
 	{
-		if (condition(str, i, &neg, my_atoi))
+		if (((str[i] >= 9 && str[i] <= 13) || str[i] == 32) && toggle)
 			i++;
-		else if (str[i] >= '0' && str[i] <= '9')
+		else if (str[i] == '-' || str[i] == '+')
 		{
-			my_atoi = (my_atoi * 10) + (str[i] - 48);
-			i++;
+			if (str[i++] == '-')
+				neg *= -1;
+			toggle = 0;
 		}
+		else if (str[i] >= '0' && str[i] <= '9')
+			res = (res * 10) + (str[i++] - 48);
 		else
 			break ;
 	}
-	if (neg % 2 == 1)
-		return (-my_atoi);
-	else
-		return (my_atoi);
+	return (res * neg);
 }
