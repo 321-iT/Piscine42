@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 10:40:58 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/01 13:01:47 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/08 15:33:05 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -26,7 +26,7 @@ void	ft_putnbr(int nb)
 	}
 	else
 		i = nb;
-	if (i > 10)
+	if (i > 9)
 	{
 		ft_putnbr(i / 10);
 		i = i % 10;
