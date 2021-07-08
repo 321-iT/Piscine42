@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 12:06:59 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/07 21:10:22 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/08 12:23:10 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	main(void)
 	write(1, "\n-2a:", 5);
 	ft_putnbr_base(-42, "0123456789abcdef");
 	write(1, "\nvn:", 4);
-	ft_putnbr_base(20, "01");
+	ft_putnbr_base(42, "poneyvif");
 	write(1, "\n:", 2);
 	ft_putnbr_base(42, "");
 	write(1, "\n:", 2);
