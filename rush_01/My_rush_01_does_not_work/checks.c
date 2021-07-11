@@ -6,10 +6,10 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 20:52:32 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/10 22:54:23 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/11 17:56:14 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <stdio.h>
 int	check_col(int **tab, int index, int nbr)
 {
 	int	x;
@@ -26,7 +26,7 @@ int	check_col(int **tab, int index, int nbr)
 		else
 			i++;
 	}
-	return (1);
+	return (0);
 }
 
 
@@ -46,7 +46,7 @@ int	check_row(int **tab, int index, int nbr)
 		else
 			i++;
 	}
-	return (1);
+	return (0);
 }
 
 int	check_double(int **tab, int index, int nbr)
@@ -54,5 +54,7 @@ int	check_double(int **tab, int index, int nbr)
 	if (check_row(tab, index, nbr) || check_col(tab, index, nbr))
 		return (1);
 	else
+	{
 		return (0);
+	}
 }

@@ -6,16 +6,18 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 17:14:55 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/10 22:54:06 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/11 17:56:11 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 void	print_table(int **tab);
-void	backtracking(int **tab, int y, int x, char *str);
+int		backtracking(int **tab, int index, int *str);
 int		check_double(int **tab, int index, int nbr);
+int		check_view(int **tab, int *str);
 
 int main(int argc, char **argv)
 {
@@ -24,10 +26,20 @@ int main(int argc, char **argv)
 	
 	int	**tab;
 	int i;
+	int k;
+	int	*str;
 
 	i = 0;
+	k = 0;
 	tab = malloc(sizeof(int *) * 4);
-	
+	str = malloc(sizeof(int) * 16);
+	while (i < 16)
+	{
+		str[i] = argv[1][k] - 48;
+		k = k + 2;
+		i++;
+	}	
+	i = 0;
 	while (i < 4)
 	{
 		tab[i] = malloc(4 * sizeof(int));
@@ -43,8 +55,9 @@ int main(int argc, char **argv)
 
 	//////////////////////////////
 	
-	backtracking(tab, 0, 0, argv[1]);
-	print_table(tab);
-	
+
+	if (backtracking(tab, 0, str))
+		print_table(tab);
+
 	free(tab);
 }
