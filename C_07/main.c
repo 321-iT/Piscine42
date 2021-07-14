@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 12:06:59 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/14 11:18:00 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/14 17:32:36 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	main(int argc, char **argv)
 			range = ft_range(3, 3);
 
 			range = ft_range(-1, 1);
-			printf("-1, 0 : %d, %d", range[0], range[1]);
+			printf("-1, 0 : %d, %d, %d", range[0], range[1], range[200]);
 		}
 
 		if (strcmp(argv[1], "2") == 0 || strcmp(argv[1], "all") == 0)
