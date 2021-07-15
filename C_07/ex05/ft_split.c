@@ -6,12 +6,11 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 14:25:31 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/14 11:17:33 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/16 00:54:10 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft_strlen5(char *str)
 {
@@ -28,7 +27,7 @@ int	is_in_charset(char n, char *charset)
 	int	i;
 
 	i = 0;
-	while (i < ft_strlen5(charset))
+	while (charset[i])
 	{
 		if (charset[i] == n)
 			return (1);
@@ -37,31 +36,22 @@ int	is_in_charset(char n, char *charset)
 	return (0);
 }
 
-char	*ft_cut(int i, char *str, char *charset)
+char	*ft_cut(int *i, char *str, int size)
 {
 	int		j;
-	int		len;
 	char	*tab;
 
-	j = i;
-	len = 0;
-	if (!charset[0])
-		return (str);
-	while (!(is_in_charset(str[j], charset)) && j >= 0)
-	{
-		len++;
-		j--;
-	}
-	tab = malloc(sizeof(char) * len);
+	tab = malloc(sizeof(char) * size + 1);
 	if (!tab)
 		return (NULL);
-	len = 0;
-	while (!(is_in_charset(str[++j], charset)))
+	j = 0;
+	while (j < size)
 	{
-		tab[len] = str[j];
-		len++;
+		tab[j] = str[*i];
+		j++;
+		*i = *i + 1;
 	}
-	tab[len] = '\0';
+	tab[size] = '\0';
 	return (tab);
 }
 
@@ -69,23 +59,19 @@ int	word_count(char *str, char *charset)
 {
 	int	i;
 	int	count;
-	int	j;
 
 	i = 0;
 	count = 0;
 	while (str[i])
 	{
-		j = 0;
-		if (is_in_charset(str[i], charset))
+		if (is_in_charset(str[i], charset) == 0)
 		{
-			while (is_in_charset(str[i], charset))
-			{
-				i++;
-				j++;
-			}
 			count++;
+			while (is_in_charset(str[i], charset) == 0 && str[i])
+				i++;
 		}
-		i++;
+		else
+			i++;
 	}
 	return (count);
 }
@@ -97,24 +83,24 @@ char	**ft_split(char *str, char *charset)
 	int		l;
 	char	**tab;
 
-	i = -1;
-	l = -1;
+	i = 0;
+	l = 0;
 	tab = malloc(sizeof(char *) * word_count(str, charset) + 1);
-	if (!tab || !str[0])
+	if (!tab)
 		return (NULL);
-	while (str[++i])
+	tab[word_count(str, charset)] = NULL;
+	while (str[i])
 	{
-		j = 0;
-		if (is_in_charset(str[i], charset))
+		if (is_in_charset(str[i], charset) == 0)
 		{
-			while (is_in_charset(str[i++], charset))
+			j = 0;
+			while (is_in_charset(str[i + j], charset) == 0 && str[i + j])
 				j++;
-			if ((--i - (j + 1) > 0))
-				tab[++l] = ft_cut(i - (j + 1), str, charset);
+			tab[l] = ft_cut(&i, str, j);
+			l++;
 		}
+		else
+			i++;
 	}
-	if (!(is_in_charset(str[i - 1], charset)))
-		tab[++l] = ft_cut(i, str, charset);
-	tab[++l] = 0;
 	return (tab);
 }

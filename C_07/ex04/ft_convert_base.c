@@ -6,13 +6,13 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 14:37:40 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/13 17:05:05 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/15 17:24:23 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-unsigned int	ft_strlen4(char *str)
+int	ft_strlen4(char *str)
 {
 	unsigned int	i;
 
@@ -20,47 +20,6 @@ unsigned int	ft_strlen4(char *str)
 	while (str[i])
 		i++;
 	return (i);
-}
-
-int	ft_len_number(int nb)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	if (nb < 0)
-		i = -nb;
-	else
-		i = nb;
-	while (i > 0)
-	{
-		i = i / 10;
-		j++;
-	}
-	return (j);
-}
-
-void	ft_rev_str(char *str, int size)
-{
-	int					i;
-	unsigned int		len;
-	char				tmp;
-	int					taille;
-
-	i = 0;
-	len = size - 1;
-	if (size % 2 != 0)
-		taille = size - 1;
-	else
-		taille = size;
-	while (i < taille / 2)
-	{
-		tmp = str[i];
-		str[i] = str[len];
-		str[len] = tmp;
-		i++;
-		len--;
-	}
 }
 
 int	ft_checkbase(char *base)
@@ -89,18 +48,37 @@ int	ft_checkbase(char *base)
 	return (1);
 }
 
-void	write_nbr_base(unsigned int nbr, char *base, char *str, int j)
+char	*ft_strcat(char *dest, char src)
+{
+	int	i;
+
+	i = 0;
+	while (dest[i] != '\0')
+		i++;
+	dest[i] = src;
+	i++;
+	dest[i] = '\0';
+	return (dest);
+}
+
+void	write_nbr_base(int nbr, char *base, char *buffer)
 {
 	unsigned int	i;
 	unsigned int	lenchain;
 
-	i = nbr;
+	i = 0;
 	lenchain = ft_strlen4(base);
-	if (i >= lenchain)
+	if (nbr < 0)
 	{
-		write_nbr_base(i / lenchain, base, str, j + 1);
+		buffer[0] = '-';
+		i = -nbr;
+	}
+	else
+		i = nbr;
+	if (i > lenchain - 1)
+	{
+		write_nbr_base(i / lenchain, base, buffer);
 		i = i % lenchain;
 	}
-	str[j] = base[i];
-	return ;
+	ft_strcat(buffer, base[i]);
 }

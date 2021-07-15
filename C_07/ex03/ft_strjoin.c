@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:47:26 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/12 14:36:41 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/15 14:41:20 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strlen3(char *str)
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		return (0);
 	while (str[i])
 		i++;
 	return (i);
@@ -48,8 +50,12 @@ int	total_len(int size, char **str, char *sep)
 
 	i = 0;
 	total = 0;
+	if (str == NULL)
+		return (0);
 	while (i < size)
 	{
+		if (!str[i] || !sep)
+			return (0);
 		total += ft_strlen3(str[i]);
 		total += ft_strlen3(sep);
 		i++;
@@ -63,23 +69,18 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		tot_len;
 	char	*result;
 
-	i = -1;
-	if (size < 0)
-		return (NULL);
-	if (size == 0)
-	{
-		result = malloc(sizeof(char) * 1);
-		result[0] = '\0';
-		return (result);
-	}
+	i = 0;
 	tot_len = total_len(size, strs, sep);
-	result = malloc(sizeof(*result) * (tot_len + 1));
+	if (!tot_len)
+		return (NULL);
+	result = malloc(sizeof(char *) * tot_len + 1);
 	if (!result)
 		return (NULL);
-	while (++i < size - 1)
+	while (i < size - 1)
 	{
 		ft_strcat3(result, strs[i]);
 		ft_strcat3(result, sep);
+		i++;
 	}
 	ft_strcat3(result, strs[i]);
 	result[tot_len + 1] = '\0';

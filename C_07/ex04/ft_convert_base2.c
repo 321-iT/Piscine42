@@ -6,48 +6,17 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 14:41:10 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/13 17:05:16 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/15 17:24:25 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
 
-int			ft_checkbase(char *base);
-int			ft_strlen4(char *str);
-int			ft_len_number(int nb);
-void		write_nbr_base(int nbr, char *base, char *str, int j);
-int			get_i_base(char n, char *base);
-long int	convert_in_decimal(char *str, char *base);
-int			ft_len_number(int nb);
-void		ft_rev_str(char *str, int size);
-
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
-{
-	long int		number;
-	char			*result;
-
-	if (!(ft_checkbase(base_from)) || !(ft_checkbase(base_to)))
-		return (NULL);
-	number = convert_in_decimal(nbr, base_from);
-	if (number < 0)
-	{
-		result = malloc(sizeof(char) * 100);
-		result[0] = '-';
-		write_nbr_base((number * -1), base_to, result, 1);
-	}
-	else
-	{
-		result = malloc(sizeof(char) * 100);
-		write_nbr_base((number), base_to, result, 0);
-	}
-	ft_rev_str(result, ft_strlen4(result));
-	if (number < 0)
-		ft_rev_str(result, ft_strlen4(result));
-	if (number < 0)
-		ft_rev_str(&result[1], ft_strlen4(result) - 1);
-	result[ft_strlen4(result) + 1] = '\0';
-	return (result);
-}
+int				ft_checkbase(char *base);
+void			ft_putnbr_base(int nbr, char *base, char *buffer);
+int				ft_strlen4(char *str);
+void			write_nbr_base(int nbre, char *base, char *buffer);
 
 int	get_i_base(char n, char *base)
 {
@@ -77,7 +46,25 @@ int	is_in_base(char n, char *base)
 	return (0);
 }
 
-long int	convert_in_decimal(char *str, char *base)
+char	*ft_strdup4(char *src)
+{
+	int		i;
+	char	*dest;
+
+	i = 0;
+	dest = malloc((ft_strlen4(src) + 1) * sizeof(char));
+	if (!dest)
+		return (NULL);
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+long int	atoi_base(char *str, char *base)
 {
 	int			i;
 	long int	res;
@@ -100,4 +87,19 @@ long int	convert_in_decimal(char *str, char *base)
 		i++;
 	}
 	return (res * neg);
+}
+
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
+{
+	long int	number;
+	char		buffer[128];
+
+	if (!ft_checkbase(base_from) || !(ft_checkbase(base_to)))
+		return (NULL);
+	number = atoi_base(nbr, base_from);
+	buffer[0] = '\0';
+	buffer[1] = '\0';
+	printf("nombre en decimal = %ld\n", number);
+	write_nbr_base(number, base_to, buffer);
+	return (ft_strdup4(buffer));
 }

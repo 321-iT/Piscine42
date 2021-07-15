@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 12:06:59 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/14 17:32:36 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/15 19:13:11 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	main(int argc, char **argv)
 			range = ft_range(3, 3);
 
 			range = ft_range(-1, 1);
-			printf("-1, 0 : %d, %d, %d", range[0], range[1], range[200]);
+			printf("-1, 0 : %d, %d", range[0], range[1]);
 		}
 
 		if (strcmp(argv[1], "2") == 0 || strcmp(argv[1], "all") == 0)
@@ -143,8 +143,8 @@ int	main(int argc, char **argv)
 			JUMP;
 			printf("\tEx03:\n");
 
-			char	*str3[5] = {"Je", "suis", "joined", "sans", "la fin"};
-			printf("%s\n",  ft_strjoin(5, str3, "___"));
+			char	*str3[5] = {"JE", "suis", "", "", ""};
+			printf("%s\n",  ft_strjoin(5, str3, "++"));
 		}
 		if (strcmp(argv[1], "4") == 0 || strcmp(argv[1], "all") == 0)
 		{
@@ -152,8 +152,12 @@ int	main(int argc, char **argv)
 			printf("\tEx04:\n");
 
 			printf("-42:%s\n", ft_convert_base("-2a", "0123456789abcdef", "0123456789"));
+			printf(" −10000000000000000000000000000000 :%s\n", ft_convert_base("-2147483648", "0123456789", "01"));
+			printf("-42 :%s\n", ft_convert_base("-101010", "01", "0123456789"));
+			printf("101010:%s\n", ft_convert_base("42", "0123456789", "01"));
+			printf("nombre chelou :%s\n", ft_convert_base("+++++-qqqqqqwwwweeer", "qwertyuio", "asdfghj"));
 			printf("2a:%s\n", ft_convert_base("0000000000000000000000042", "0123456789", "0123456789abcdef"));
-			printf("42:%s\n", ft_convert_base("--2a", "0123456789abcdef", "0123456789"));
+			printf("42:%s\n", ft_convert_base("201242ffafa", "0123456789abcdef", "01234567"));
 			printf("-2a:%s\n", ft_convert_base("-42", "0123456789", "0123456789abcdef"));
 		}
 		if (strcmp(argv[1], "5") == 0 || strcmp(argv[1], "all") == 0)
@@ -163,7 +167,8 @@ int	main(int argc, char **argv)
 
 
 			char **tab;
-
+			tab = ft_split("                                    " ,"    ");
+			printf("%s\n", c_strautojoin(tab, " "));
 			tab = ft_split("Ceci&est$un##############################################################################################################################################################succes@!", "&$#@");
 			printf("%s\n", c_strautojoin(tab, " "));
 			tab = ft_split("Success", "CUT");
