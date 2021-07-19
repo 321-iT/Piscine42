@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 12:06:59 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/15 19:13:11 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/17 22:12:25 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,20 +168,8 @@ int	main(int argc, char **argv)
 
 			char **tab;
 			tab = ft_split("                                    " ,"    ");
-			printf("%s\n", c_strautojoin(tab, " "));
-			tab = ft_split("Ceci&est$un##############################################################################################################################################################succes@!", "&$#@");
-			printf("%s\n", c_strautojoin(tab, " "));
-			tab = ft_split("Success", "CUT");
-			printf("%s\n", c_strautojoin(tab, " "));
-			tab = ft_split("Success", "");
-			printf("%s\n", c_strautojoin(tab, " "));
-			tab = ft_split("", "");
-			printf("OK\n");
-			tab = ft_split("", "CUT");
-			printf("OK\n");
-			tab = ft_split("       ", "       ");
-			printf("OK\n");
-			tab = ft_split("         ", "       ");
-			printf("OK\n");		}
+			if (!tab)
+				return (-1);
+		}
 	}
 }

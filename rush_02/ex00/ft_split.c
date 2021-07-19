@@ -5,22 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/13 14:25:31 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/17 22:12:10 by ascotto-         ###   ########.fr       */
+/*   Created: 2021/07/16 13:59:10 by ascotto-          #+#    #+#             */
+/*   Updated: 2021/07/18 22:38:37 by mchassig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdlib.h>
-
-int	ft_strlen5(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+#include "kayak.h"
 
 int	is_in_charset(char n, char *charset)
 {
@@ -55,54 +44,31 @@ char	*ft_cut(int *i, char *str, int size)
 	return (tab);
 }
 
-int	word_count(char *str, char *charset)
+char	**ft_split(char *str, char *charset, int ac, char **av)
 {
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		if (is_in_charset(str[i], charset) == 0)
-		{
-			count++;
-			while (is_in_charset(str[i], charset) == 0 && str[i])
-				i++;
-		}
-		else
-			i++;
-	}
-	return (count);
-}
-
-char	**ft_split(char *str, char *charset)
-{
-	int		i;
-	int		j;
-	int		l;
-	char	**tab;
+	int					i;
+	unsigned int		j;
+	int					l;
+	char				**result;
 
 	i = 0;
 	l = 0;
-	tab = malloc(sizeof(char *) * word_count(str, charset) + 1);
-	if (!tab)
+	result = malloc(sizeof(char *) * (ft_line_count_open(ac, av, &j) + 1));
+	if (!(result) || ft_line_count_open(ac, av, &j) < 1)
 		return (NULL);
-	tab[word_count(str, charset)] = NULL;
+	result[ft_line_count_open(ac, av, &j)] = NULL;
 	while (str[i])
 	{
-		if (is_in_charset(str[i], charset) == 0)
+		if (is_in_charset(str[i], charset) == 0 && str[i])
 		{
 			j = 0;
 			while (is_in_charset(str[i + j], charset) == 0 && str[i + j])
 				j++;
-			tab[l] = ft_cut(&i, str, j);
-			if (!tab[l])
-				return (NULL);
+			result[l] = ft_cut(&i, str, j);
 			l++;
 		}
 		else
 			i++;
 	}
-	return (tab);
+	return (result);
 }
