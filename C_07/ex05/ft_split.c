@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 14:25:31 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/17 22:12:10 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/16 00:54:10 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,6 @@ char	**ft_split(char *str, char *charset)
 			while (is_in_charset(str[i + j], charset) == 0 && str[i + j])
 				j++;
 			tab[l] = ft_cut(&i, str, j);
-			if (!tab[l])
-				return (NULL);
 			l++;
 		}
 		else

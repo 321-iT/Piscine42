@@ -6,11 +6,10 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 14:41:10 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/15 17:24:25 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/16 01:14:22 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 
 int				ft_checkbase(char *base);
@@ -99,7 +98,6 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	number = atoi_base(nbr, base_from);
 	buffer[0] = '\0';
 	buffer[1] = '\0';
-	printf("nombre en decimal = %ld\n", number);
 	write_nbr_base(number, base_to, buffer);
 	return (ft_strdup4(buffer));
 }
