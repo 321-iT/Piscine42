@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:47:26 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/15 14:41:20 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/19 10:43:29 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,10 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	char	*result;
 
 	i = 0;
+	if (size <= 0)
+		return (result = malloc(sizeof(char)));
 	tot_len = total_len(size, strs, sep);
-	if (!tot_len)
-		return (NULL);
+	tot_len -= ft_strlen3(sep);
 	result = malloc(sizeof(char *) * tot_len + 1);
 	if (!result)
 		return (NULL);
@@ -83,6 +84,6 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 		i++;
 	}
 	ft_strcat3(result, strs[i]);
-	result[tot_len + 1] = '\0';
+	result[tot_len] = '\0';
 	return (result);
 }
