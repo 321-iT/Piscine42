@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 13:59:10 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/16 14:35:53 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/19 18:21:41 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -92,4 +92,19 @@ char	**ft_split(char *str, char *charset)
 			i++;
 	}
 	return (result);
+}
+
+
+#include <stdio.h>
+int main(int argc, char **argv)
+{
+    (void)argc;
+    char **res = ft_split(argv[1], argv[2]);
+    int i = 0;
+    while (res[i])
+    {
+        printf("t[%d] = %s\n", i, res[i]);
+        i++;
+    }
+    printf("%s",res[i]);
 }
