@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 17:29:09 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/19 18:25:30 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/19 23:04:25 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,17 @@ int	ft_strcmp(char *s1, char *s2)
 	i = 0;
 	while (s1[i] && s2[i])
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
+		if (s1[i] == s2[i])
+			i++;
+		else
+			break ;
 	}
-	return (0);
+	if ((s1[i] - s2[i]) < 0)
+		return (-1);
+	else if ((s1[i] - s2[i]) > 0)
+		return (1);
+	else
+		return (0);
 }
 
 void	ft_sort_string_tab(char **tab)
@@ -36,7 +42,7 @@ void	ft_sort_string_tab(char **tab)
 		j = 0;
 		while (tab[j + 1])
 		{	
-			if (ft_strcmp(tab[j], tab[j + 1]) > 0)
+			if (ft_strcmp(tab[j], tab[j + 1]) >= 0)
 			{
 				tmp = tab[j];
 				tab[j] = tab[j + 1];
