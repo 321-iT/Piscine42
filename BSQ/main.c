@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 11:03:59 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/22 11:30:48 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/22 13:20:29 by ascotto-         ###   ########.fr       */
 /*   Updated: 2021/07/22 10:18:58 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
+		printf("Testing %s\n", argv[i]);
 		fd = open(argv[i], O_RDONLY);
 		if (fd == -1)
 			return (ft_error());

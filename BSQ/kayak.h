@@ -6,7 +6,7 @@
 /*   By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 11:29:38 by ascotto-          #+#    #+#             */
-/*   Updated: 2021/07/22 10:58:18 by ascotto-         ###   ########.fr       */
+/*   Updated: 2021/07/22 13:23:37 by ascotto-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
-# define BUF_SIZE 8000000
+# define BUF_SIZE 4096
 
 typedef struct s_answer
 {
