@@ -6,7 +6,7 @@
 #    By: ascotto- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/21 17:49:00 by ascotto-          #+#    #+#              #
-#    Updated: 2021/07/22 13:39:52 by ascotto-         ###   ########.fr        #
+#    Updated: 2021/09/23 17:17:21 by ascotto-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,5 +14,5 @@
 
 for i in {1..500}
 do
-        rm -rf /maps/test* && ./perl_generator.pl 10 10 6 > maps/test_map${i}
+        rm -rf /maps/test* && ./perl_generator.pl 100 100 55 > maps/test_map${i}
 done
